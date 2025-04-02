@@ -1,0 +1,11 @@
+<h1>This is a Template Driven form</h1>
+<form #basicForm="ngForm" (ngSubmit)="onSubmitForm(basicForm.value)">
+    <!-- we are using ngModal to connect/bind input(username, password fields) to the <form>, basically ngModal use to connect input fields to form -->
+    <input type="text" ngModel name="usr_name" placeholder="Enter Username"/> 
+    <input type="text" ngModel name="password" placeholder="Enter Password"/>
+    <button type="submit">Submit</button>
+
+    <p>Data-> {{formData | json}}</p>
+</form>
+
+<button (click)="onSubmitForm(basicForm.value)">Outside from submit button</button>

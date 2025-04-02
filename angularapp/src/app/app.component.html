@@ -1,0 +1,165 @@
+<!-- If condition in angular -->
+<h1>If condition</h1>
+<h1 *ngIf="showHeader; then ifCond else elseCond"></h1>
+<ng-template #ifCond>
+    <h1>Hi i am if condition</h1>
+</ng-template>
+
+<ng-template  #elseCond>
+    <h2>Hi i am else condition</h2>
+</ng-template>
+
+<hr/>
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- for loop -->
+<h1 *ngFor="let items of arr1">{{items}}</h1>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- switch -->
+<div [ngSwitch] = "color">
+    <h1 class='redColor' *ngSwitchCase="'red'">I am red color</h1>
+    <h1 class='blueColor' *ngSwitchCase="'blue'">I am blue color</h1>
+    <h1 class='greenColor' *ngSwitchCase="'green'">I am green color</h1>
+    <h1 *ngSwitchDefault >default</h1>
+</div>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- use of function -->
+<input [disabled] = disabledInp type="text" #inp1/>
+<button (click)="getValueFromInput(inp1.value)">Submit</button>
+<p>user Entered {{inputValue1}}</p>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- using other modules html file -->
+<app-class1></app-class1>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- doing operations in child component -->
+<h1>sending data to parent</h1>
+<app-child [item] = "sendDataToChild" ></app-child>
+<br>
+<button (click)="updateChildComponentValue('sorry button clicked! updated value is -> Hello Geet')">Update Child component value</button> 
+ <!-- here we have passed bow we have to bind "value" in child component for that we will use
+    decorators "@Input" 
+ -->
+ <hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- get data from child -->   <!-- for access use ()-->
+<h1>get data from child</h1>
+<app-child [item] = "sendDataToChild" (getDataFromChildComponentEvent)="getDataFromChildComponent($event)"></app-child>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- passing single value to child --> 
+<h1>passing single value to child</h1>
+<app-child [item] = "sendDataToChild" ></app-child>   <!-- for access use []-->
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- passing array to child-->
+<h1>passing array to child</h1>
+<app-child [myDataArray] = "arraysData"></app-child>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- passing object to child -->
+<h1>passing object to child</h1>
+<app-child [myDataObj] = "obj1"></app-child>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- pipes in angular (pipes me har chij small me hi karo)-->
+<h1>Pipes</h1> 
+<p>{{myname | uppercase}}</p>
+<p>{{myname | lowercase}}</p>
+<p>Date is: {{mydate | date}}</p>
+<p>Date is: {{mydate | date: 'fulldate'}}</p>
+<p>slice ->{{myname | slice: 3 : 9}}</p>
+<!-- using 2 pipes-->
+<p>slice ->{{myname | slice: 3 : 9 | uppercase}}</p>
+<!-- JSON pipes -->
+<p>{{obj1 | json}}</p>
+<p>{{obj1 | json |uppercase}}</p>
+<p>{{200 | currency: 'INR'}}</p>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- custom pipes - ng g p pipename -->
+<h1>Custom pipes</h1>
+<p>{{20 | usdToInrConvert: 10}}</p>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- basic form in angular -->
+<app-basic-form></app-basic-form>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- Reactive form -->
+<app-reactive-form></app-reactive-form>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- Reactive form with validation -->
+<app-reactive-form-validation></app-reactive-form-validation>
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- Routing in Angular -->
+<h1>Routing in Angular</h1>
+<a routerLink="home">Home</a>
+<a routerLink="about"> About</a>
+
+<router-outlet></router-outlet>   <!-- without this line router will not work-->
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- making service class and which you can use in footer class too(reusable) -->
+<h1> Footer component calls</h1>
+<app-footer></app-footer>
+<!-- you can see, we have imported service class through constructor (named: UserSvcService) in app.component.ts . so you can do same in footer.ts also -->
+<hr/>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- now lets print value we got from service class -->
+<h1>Service class data calls</h1>
+<div *ngFor="let data of users">service data->{{data | json}}</div>
+<hr/>
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- ngClass: to conditionally add the class -->
+<h1 [ngClass]="{'bgRed': text!='geet', 'bgGreen': text=='geet'}">{{text}}</h1>
+<!-- here "" used for js and {} used becoz multiple class aane vali hai in json format({key:value, key:value}) -->
+
+<!-- api call in angular -->
+<h1>Stars Wars Planets.... (Api calls)</h1>
+
+<li *ngFor="let items of planets.results" key="items" (click)="showChilds(items.name)" class="cursor-pointer">
+    {{items.name | json}}
+    <p *ngIf="childrensId == items.name">
+        <span>diameter: {{items.diameter}}</span> <br/>
+        <span>climate: {{items.climate}}</span>
+    </p>
+</li>

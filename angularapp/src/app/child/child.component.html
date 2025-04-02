@@ -1,0 +1,15 @@
+<p>child works!, now lets access the parent value-></p>
+<p>{{item}}</p>
+
+<p>passing data from child to parent</p>
+<input type="text" #inp1122/>
+<button (click)="getDataFromChildComponentEvent.emit(inp1122.value)">Update Data</button>
+
+<!-- access array coming from parent component -->
+ <p *ngFor="let items of myDataArray">Array got from child is-> {{items}}</p>
+<!-- print index of above value -->
+ <p>here are value at index 2->{{myDataArray[2]}}</p>
+
+<!-- access object coming from parent component -->
+ <p>Its my Object name -> {{myDataObj ['name']}}</p>
+ <p>Its my Object class -> {{myDataObj ['class']}}</p>

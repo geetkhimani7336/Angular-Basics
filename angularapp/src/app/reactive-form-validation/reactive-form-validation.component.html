@@ -1,0 +1,8 @@
+<h1>reactive-form-validation works!</h1>
+<form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+    <input type="text" placeholder="Enter Username" formControlName="username"/><br/>
+    <span *ngIf="user && user.invalid && user.touched" class="red-error">This Field is not Valid</span><br/>
+
+    <input type="text" placeholder="Enter New Password" formControlName="newPassword"/>
+    <button type="submit" [disabled]="loginForm.invalid">Submit validation form</button>
+</form>
