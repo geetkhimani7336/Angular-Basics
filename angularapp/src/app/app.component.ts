@@ -10,6 +10,10 @@ import { ApiCallsServicesService } from './api-calls/api-calls-services.service'
 export class AppComponent {
   // string value '' single quote and for js "" double quote
   title = 'angularapp';
+  data = "Hey! I am from .ts file";
+  showIfCondition=true;
+  displayVal='';
+  displayName='';
   showHeader= false;
   arr1=['geet', 'h','j', 'k', 'l'];
   color= 'green';
@@ -33,6 +37,20 @@ export class AppComponent {
   constructor(private userdt: UserSvcService, private httpService: ApiCallsServicesService){
     // calling the service class
     this.users=userdt.users();
+  }
+  getValue(name: string, secondName: string){
+    alert("function is called " +name + " and " + secondName);
+  }
+
+  // understand events
+  getData(val:any){
+    console.log("function val->", val);
+  }
+
+  getInpValue(val:any, val2:any){
+    console.log("input value is ", val, " and ", val2);
+    this.displayVal= val;
+    this.displayName= val2;
   }
 
   getValueFromInput(val:any){

@@ -1,3 +1,33 @@
+<!-- basics -->
+<!-- understand this first -->
+<!-- In angular we use:  
+    - single quote '' -> for strings in typescript  
+    example: title = 'angularapp' here we have to use single quote because we are defining string value in .ts file
+    
+    - double quote " " -> when we have to use variable inside html
+    example: *ngIf = "showIfCondition"  here we have to use double quote because we have to use variable "showIfCondition" which is defined in .ts file
+    or angular predefined -> for 
+
+    same, if we have to pass string value in function then
+    example: (click)="getValue('anil shau', 'john douh')" here we have to use double quote for function and single quote for string value which we are passing in function
+-->
+
+
+<h1>Basics of angular</h1>
+<h5>Hello world {{title}}</h5>
+<h5>my data is {{data}}</h5>
+<button (click)="getValue('anil shau', 'john douh')">Click me</button>
+
+<!-- ------------------------------------------------------------------------------ -->
+
+<h1>Accessing any component: like here i am trying to access footer component</h1>
+<app-footer></app-footer>
+
+<!-- ------------------------------------------------------------------------------ -->
+<!-- only if condition -->
+ <h1 *ngIf="showIfCondition">
+    your condition is true
+ </h1>
 <!-- If condition in angular -->
 <h1>If condition</h1>
 <h1 *ngIf="showHeader; then ifCond else elseCond"></h1>
@@ -107,6 +137,31 @@
 
 <!-- ------------------------------------------------------------------------------ -->
 
+<h1>Basics Input in Angular</h1>
+<input type="text" #myinput placeholder="event keyup" (keyup)="getData(myinput.value)"/>
+<!-- keyup -> calls on release of keyboard key (jab keyboard key se hand up krte ho tab) -->
+
+<!-- all the events should be on "small case" like (click), (keyup), (blur) etc. -->
+<!-- (keydown) -> jab tak ek key long press kiye hue ho tab tak -->
+
+<!-- blur -->
+<input type="text" #myinput1 placeholder="event blur" (blur)="getData(myinput1.value)"/> 
+<!-- blur -> calls when the input loses focus -->
+
+<!-- call event on hovering in h1 tag -->
+<h1 (mouseover)="getData('you hovered on h1 tag')">Hover on me</h1>
+
+<!-- access input attributes -->
+<input
+   type="text"
+   #inp1
+   placeholder="Enter name"
+   name="username"
+/> <!-- here #inp1 is the unique id of the input so that using inp1.value we can get the value of input -->
+<button (click)="getInputValue(inp1.value, inp1.name)">click</button>
+<p>value of you input is -> {{displayVal}} and its name define is -> {{displayName}}</p>
+
+<!-- ------------------------------------------------------------------------------ -->
 <!-- basic form in angular -->
 <app-basic-form></app-basic-form>
 <hr/>
