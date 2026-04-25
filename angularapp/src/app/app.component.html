@@ -154,11 +154,11 @@
 <!-- access input attributes -->
 <input
    type="text"
-   #inp1
+   #usernameInput
    placeholder="Enter name"
    name="username"
-/> <!-- here #inp1 is the unique id of the input so that using inp1.value we can get the value of input -->
-<button (click)="getInputValue(inp1.value, inp1.name)">click</button>
+/> <!-- here #usernameInput is the unique id of the input so that using usernameInput.value we can get the value of input -->
+<button (click)="getInpValue(usernameInput.value, usernameInput.name)">click</button>
 <p>value of you input is -> {{displayVal}} and its name define is -> {{displayName}}</p>
 
 <!-- ------------------------------------------------------------------------------ -->
